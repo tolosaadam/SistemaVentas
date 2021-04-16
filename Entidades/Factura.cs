@@ -13,7 +13,19 @@ namespace Entidades
         {
             Tipo = tipo;
         }
-        public string Tipo { get; set; }
+        private string tipo;
+        public string Tipo
+        {
+            get { return tipo; }
+            set
+            {
+                if (value.Trim().Length < 1 || value.Trim().Length > 1)
+                {
+                    throw new Exception("El campo Tipo no puede estar vacio o tener mas de 1 caracter");
+                }
+                tipo = value.Trim();
+            }
+        }
 
     }
 }

@@ -17,7 +17,19 @@ namespace Entidades
             Contacto = contacto;
             DatoContacto = datoContacto;
         }
-        public string Nombre { get; set; }
+        private string nombre;
+        public string Nombre
+        {
+            get { return nombre; }
+            set
+            {
+                if (value.Trim().Length < 1 || value.Trim().Length > 50)
+                {
+                    throw new Exception("El nombre de la empresa no puede estar vacio o superar los 50 caracteres");
+                }
+                nombre = value.Trim();
+            }
+        }
         public string CUIT { get; set; }
         public Persona Contacto { get; set; }
         public DatoContacto DatoContacto { get; set; }
