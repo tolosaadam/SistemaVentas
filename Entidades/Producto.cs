@@ -30,8 +30,37 @@ namespace Entidades
 
         }
         public string Nombre { get; set; }
-        public string Descripcion { get; set; }
-        public decimal PrecioCosto { get; set; }
+
+        private string descripcion;
+        public string Descripcion
+        {
+            get { return descripcion; }
+            set
+            {
+
+                if (value.Trim().Length > 1)
+                {
+                    if (value.Trim().Length > 500)
+                    {
+                        throw new Exception("El campo descripcion no es obligatorio, pero si lo  declaran debe tener como máximo 500 caracteres");
+                    }
+                }
+                descripcion = value.Trim();
+            }
+        }
+        private decimal precioCosto;
+        public decimal PrecioCosto
+        {
+            get { return precioCosto; }
+            set
+            {
+                if (value < Convert.ToDecimal(0.1))
+                {
+                    throw new Exception("El precio de costo no puede ser menor  0.1");
+                }
+                precioCosto = value;
+            }
+        }
         public double Margen { get; set; }
         public static double Iva { get; set; }
         public decimal PrecioBruto { get; }

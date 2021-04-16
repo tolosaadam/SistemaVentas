@@ -14,8 +14,19 @@ namespace Entidades
         {
             CUIT = cuit;
         }
-  
-        public string CUIT { get; set; }
-    
+
+        private string cuit;
+        public string CUIT
+        {
+            get { return cuit; }
+            set
+            {
+                if (value.Trim().Length < 11 || value.Trim().Length > 11)
+                {
+                    throw new Exception("El campo CUIT debe tener 11 caracteres");
+                }
+                cuit = value.Trim();
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ namespace Entidades
             Email = email;
             Direccion = direccion;
             Telefono = telefono;
+            
         }
         private string email;
         public string Email
@@ -27,7 +28,38 @@ namespace Entidades
                 email = value.Trim();
             }
         }
-        public string Direccion { get; set; }
-        public string Telefono { get; set; }
+        private string direccion;
+
+        public string Direccion
+        {
+            get { return direccion; }
+            set
+            {
+                if (value.Trim().Length < 15 || value.Trim().Length > 100)
+                {
+                    throw new Exception("El campo direccion no puede estar vacio y  debe tener un minimo de 15 caracteres y un  máximo de 100");
+                }
+                direccion = value.Trim();
+            }
+        }
+        private string telefono;
+        public string Telefono
+        {
+            get { return telefono; }
+            set
+            {
+                
+                if(value.Trim().Length > 1)
+                {
+                    if (value.Trim().Length < 15 || value.Trim().Length > 15)
+                    {
+                        throw new Exception("El campo telefono debe tener 15 caracteres");
+                    }
+                }
+                
+                
+                telefono = value.Trim();
+            }
+        }
     }
 }
